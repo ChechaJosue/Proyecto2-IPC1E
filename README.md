@@ -5,6 +5,7 @@ Repositorio para ejemplos del Proyecto 2 - IPC1 E
 
 ## Frontend:
 - Registro de usuarios
+- Ejemplo incompleto de subida y lectura de archivos csv
 
 ## Backend:
 - Registro de usuarios

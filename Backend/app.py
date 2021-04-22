@@ -39,6 +39,30 @@ def insertarUsuario():
      "usuario": {"id": id, "correo": correo, "pwd": pwd, "nombre": nombre, "edad": edad, "fecha_nacimiento": fecha_nacimiento}
     }), 200
 
+
+@app.route('/usuario/login', methods=['POST'])
+def logIn():
+    correo = request.json["correo"]
+    pwd = request.json["pwd"]
+    
+    usuario = usuarios.login(correo, pwd)
+
+    if usuario:
+        return jsonify({ "mensaje": "OK", "usuario": usuario}), 200
+    else:
+        return jsonify({ "mensaje": "Credenciales inválidas"}), 404
+
+@app.route('/usuario/carga-masiva', methods=['POST'])
+def cargaMasiva():
+    usuariosCM = request.json["usuarios"]
+    print (usuariosCM)
+    res = usuarios.cargaMasiva(usuariosCM)
+
+    if res == "OK":
+        return jsonify({ "mensaje": "OK", "data": usuarios.obtener_todos()}), 200
+    else:
+        return jsonify({ "mensaje": "Hubo un error al realizar la carga masiva"}), 404
+
 # Recuperar todos los usuarios
 @app.route('/usuario', methods=['GET'])
 def getUsuarios():

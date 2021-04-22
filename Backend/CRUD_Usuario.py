@@ -20,5 +20,18 @@ class CRUD_Usuario:
         # No se encontro el usuario
         return None
 
+    def login(self, correo, pwd):
+        for usuario in self.usuarios:
+            if usuario.correo == correo and usuario.pwd == pwd:
+                return usuario.dump()
+
+        # No se encontro el usuario con correo y contraseña
+        return None
+
+    def cargaMasiva(self, usuarios_cm):
+        for usuario in usuarios_cm:
+            self.insertar(usuario['correo'], usuario['pwd'], usuario['nombre'], usuario['edad'], usuario['fecha_nacimiento'])
+        return "OK"
+
     def obtener_todos(self):
         return [usuario.dump() for usuario in self.usuarios]

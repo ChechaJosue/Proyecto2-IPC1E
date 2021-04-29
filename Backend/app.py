@@ -3,9 +3,11 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 from usuario import Usuario
 from CRUD_Usuario import CRUD_Usuario
-
+from producto import Producto
+from CRUD_Producto import CRUD_Producto
 
 usuarios = CRUD_Usuario()
+productos = CRUD_Producto()
 app = Flask(__name__)
 CORS(app)
 
@@ -63,10 +65,26 @@ def cargaMasiva():
     else:
         return jsonify({ "mensaje": "Hubo un error al realizar la carga masiva"}), 404
 
+@app.route('/producto/carga-masiva', methods=['POST'])
+def cargaMasivaProductos():
+    productosCM = request.json["productos"]
+    print (productosCM)
+    res = productos.cargaMasiva(productosCM)
+
+    if res == "OK":
+        return jsonify({ "mensaje": "OK", "data": productos.obtener_todos()}), 200
+    else:
+        return jsonify({ "mensaje": "Hubo un error al realizar la carga masiva"}), 404
+
 # Recuperar todos los usuarios
 @app.route('/usuario', methods=['GET'])
 def getUsuarios():
     return jsonify({"mensaje": "OK", "data": usuarios.obtener_todos()}), 200
+
+# Recuperar todos los usuarios
+@app.route('/producto', methods=['GET'])
+def getProductos():
+    return jsonify({"mensaje": "OK", "data": productos.obtener_todos()}), 200
 
 # Recuperar usuario por id
 @app.route('/usuario/<string:id_usuario>', methods=['GET'])

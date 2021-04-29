@@ -20,7 +20,7 @@
 
     <!-- App CSS -->
     <link id="theme-style" rel="stylesheet" href="assets/css/portal.css" />
-	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
   </head>
 
   <body class="app">
@@ -791,32 +791,66 @@
           <hr class="my-4" />
           <div class="row g-4 settings-section">
             <div class="col-12 col-md-4">
-              <h3 class="section-title">Plan</h3>
-              <div class="section-intro">
-                Settings section intro goes here. Lorem ipsum dolor sit amet,
-                consectetur adipiscing elit. <a href="help.html">Learn more</a>
-              </div>
+              <h3 class="section-title">Productos</h3>
+              
             </div>
             <div class="col-12 col-md-8">
               <div class="app-card app-card-settings shadow-sm p-4">
                 <div class="app-card-body">
-                  <div class="mb-2"><strong>Current Plan:</strong> Pro</div>
-                  <div class="mb-2">
-                    <strong>Status:</strong>
-                    <span class="badge bg-success">Active</span>
-                  </div>
-                  <div class="mb-2"><strong>Expires:</strong> 2030-09-24</div>
-                  <div class="mb-4">
-                    <strong>Invoices:</strong> <a href="#">view</a>
-                  </div>
-                  <div class="row justify-content-between">
-                    <div class="col-auto">
-                      <a class="btn app-btn-primary" href="#">Upgrade Plan</a>
+                  <form class="settings-form">
+                    <div class="mb-3">
+                      <label for="setting-input-1" class="form-label"
+                        >Archivo csv<span
+                          class="ml-2"
+                          data-container="body"
+                          data-toggle="popover"
+                          data-trigger="hover"
+                          data-placement="top"
+                          data-content="Archivo separado por comas."
+                          ><svg
+                            width="1em"
+                            height="1em"
+                            viewBox="0 0 16 16"
+                            class="bi bi-info-circle"
+                            fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
+                            />
+                            <path
+                              d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588z"
+                            />
+                            <circle cx="8" cy="4.5" r="1" /></svg></span
+                      ></label>
+                      <input
+                        type="file"
+                        class="form-control"
+                        id="input-file-productos"
+                        required
+                      />
                     </div>
-                    <div class="col-auto">
-                      <a class="btn app-btn-secondary" href="#">Cancel Plan</a>
+                    <div class="mb-3">
+                      <label for="setting-input-2" class="form-label"
+                        >Resultado</label
+                      >
+                      <textarea
+                        type="text"
+                        class="form-control"
+                        id="textarea-res"
+                        rows="6"
+                        disabled
+                      ></textarea>
                     </div>
-                  </div>
+                    <button
+                      type="button"
+                      onclick="cargaMasivaProductos()"
+                      class="btn app-btn-primary"
+                    >
+                      Cargar
+                    </button>
+                  </form>
                 </div>
                 <!--//app-card-body-->
               </div>

@@ -1,8 +1,8 @@
-const ruta = "http://localhost:4000/usuario";
+const ruta = "http://localhost:4000/producto";
 let plantillaHTML = "";
 
-function cargarUsuarios() {
-  const body_usuarios = document.getElementById("body-usuarios");
+function cargarProductos() {
+  const body_productos = document.getElementById("body-productos");
 
   fetch(ruta, {
     method: "GET",
@@ -12,22 +12,22 @@ function cargarUsuarios() {
   })
     .then((res) => res.json())
     .then((response) => {
-      let usuarios = response.data;
+      let productos = response.data;
 
       let filas = "";
 
-      usuarios.forEach((usuario) => {
+      productos.forEach((producto) => {
         filas += `\n<tr>
-        <td class="cell">${usuario.id}</td>
-        <td class="cell">${usuario.nombre}</td>
-        <td class="cell">${usuario.correo}</td>
-        <td class="cell">${usuario.edad}</td>
-        <td class="cell">${usuario.fecha_nacimiento}</td>
+        <td class="cell">${producto.id}</td>
+        <td class="cell">${producto.nombre}</td>
+        <td class="cell">${producto.correo}</td>
+        <td class="cell">${producto.edad}</td>
+        <td class="cell">${producto.fecha_nacimiento}</td>
         </tr>`;
       });
 
-      $("#body-usuarios").empty();
-      $("#body-usuarios").append(filas);
+      $("#body-productos").empty();
+      $("#body-productos").append(filas);
 
       plantillaHTML = `<!DOCTYPE html>
       <html lang="en">
@@ -35,7 +35,7 @@ function cargarUsuarios() {
           <meta charset="utf-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
       
-          <title>Reporte usuarios</title>
+          <title>Reporte productos</title>
       
           <link rel="icon" href="./images/favicon.png" type="image/x-icon" />
       
@@ -193,13 +193,13 @@ function cargarUsuarios() {
                 <td>Fecha nacimiento</td>
               </tr>`;
 
-      usuarios.forEach((usuario) => {
+      productos.forEach((producto) => {
         plantillaHTML += `\n<tr class="item">
-                <td>${usuario.id}</td>
-                <td>${usuario.nombre}</td>
-                <td>${usuario.correo}</td>
-                <td>${usuario.edad}</td>
-                <td>${usuario.fecha_nacimiento}</td>
+                <td>${producto.id}</td>
+                <td>${producto.nombre}</td>
+                <td>${producto.correo}</td>
+                <td>${producto.edad}</td>
+                <td>${producto.fecha_nacimiento}</td>
               </tr>\n`;
       });
 
@@ -214,5 +214,5 @@ function cargarUsuarios() {
 }
 
 function generarReporte() {
-  html2pdf().from(plantillaHTML).toPdf().save("reporte_usuarios.pdf");
+  html2pdf().from(plantillaHTML).toPdf().save("reporte_productos.pdf");
 }

@@ -20,9 +20,14 @@
 
     <!-- App CSS -->
     <link id="theme-style" rel="stylesheet" href="assets/css/portal.css" />
+    <script
+      type="text/javascript"
+      src="http://code.jquery.com/jquery-1.7.1.min.js"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
   </head>
 
-  <body class="app">
+  <body onload="cargarProductos()" class="app">
     <header class="app-header fixed-top">
       <div class="app-header-inner">
         <div class="container-fluid py-2">
@@ -774,7 +779,7 @@
           </div>
           <!--//row-->
 
-          <div class="row g-4">
+          <div id="body-productos" class="row g-4">
             <!--//col-->
             <div class="col-6 col-md-4 col-xl-3 col-xxl-2">
               <div class="app-card app-card-doc shadow-sm h-100">
@@ -800,7 +805,7 @@
                     </ul>
                   </div>
                   <!--//app-doc-meta-->
-                  <a onclick="alert('hola')">
+                  <a onclick="agregarCarrito(idproducto)">
                     <div class="app-card-actions">
                       <div class="dropdown">
                         <div
@@ -869,6 +874,6 @@
     <script src="assets/plugins/popper.min.js"></script>
     <!-- <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script> -->
 
-    <!-- Page Specific JS -->
+    <script src="./funciones/productos.js"></script>
   </body>
 </html>
